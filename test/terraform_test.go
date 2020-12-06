@@ -5,12 +5,13 @@ import (
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	test_structure "github.com/gruntwork-io/terratest/modules/test-structure"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestEndToEndDeploymentScenario(t *testing.T) {
 	t.Parallel()
 
-	fixtureFolder := "../"
+	fixtureFolder := "../main.tf"
 
 	// User Terratest to deploy the infrastructure
 	test_structure.RunTestStage(t, "setup", func() {
@@ -29,7 +30,8 @@ func TestEndToEndDeploymentScenario(t *testing.T) {
 	test_structure.RunTestStage(t, "validate", func() {
 		// run validation checks here
 		terraformOptions := test_structure.LoadTerraformOptions(t, fixtureFolder)
-		publicIpAddress := terraform.Output(t, terraformOptions, "public_ip_address")
+		location := terraform.Output(t, terraformOptions, "west_europe")
+		assert.Equal(t, "West Europe", location)
 	})
 
 	// When the test is completed, teardown the infrastructure by calling terraform destroy
