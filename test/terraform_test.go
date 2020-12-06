@@ -11,7 +11,7 @@ import (
 func TestEndToEndDeploymentScenario(t *testing.T) {
 	t.Parallel()
 
-	fixtureFolder := "../main.tf"
+	fixtureFolder := "../"
 
 	// User Terratest to deploy the infrastructure
 	test_structure.RunTestStage(t, "setup", func() {
@@ -31,7 +31,7 @@ func TestEndToEndDeploymentScenario(t *testing.T) {
 		// run validation checks here
 		terraformOptions := test_structure.LoadTerraformOptions(t, fixtureFolder)
 		location := terraform.Output(t, terraformOptions, "west_europe")
-		assert.Equal(t, "West Europe", location)
+		assert.Equal(t, "westeurope", location)
 	})
 
 	// When the test is completed, teardown the infrastructure by calling terraform destroy
