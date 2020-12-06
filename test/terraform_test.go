@@ -8,6 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+//Code source: https://docs.microsoft.com/en-us/azure/developer/terraform/best-practices-end-to-end-testing
 func TestEndToEndDeploymentScenario(t *testing.T) {
 	t.Parallel()
 

@@ -1,3 +1,4 @@
+//Code soruce: https://docs.microsoft.com/en-us/azure/developer/terraform/create-vm-cluster-with-infrastructure?fbclid=IwAR3XCDGgqcmK6slf4j-UuSaABNhAulVy1S6215F4JZrc_CGxPMPbiKkq3M0
 resource "azurerm_resource_group" "main" {
   name     = "systemAdmin-Eksam"
   location = "West Europe"
